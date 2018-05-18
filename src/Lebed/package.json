@@ -1,0 +1,20 @@
+{
+  "name": "devpro14052018",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc -w",
+    "watch": "nodemon './dist/home1.js' --watch './dist'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tslint": "^5.10.0",
+    "typescript": "^2.8.3",
+    "nodemon": "^1.17.4"
+  },
+  "dependencies": {}
+}
