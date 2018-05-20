@@ -1,0 +1,12 @@
+{
+    "extends": "../../tslint.json",
+    "rules": {
+        "no-any": true,
+        "array-type": ["array-simple"],
+        "interface-over-type-literal": false,
+        "variable-name": [true,
+            "check-format",
+            "allow-leading-underscore"
+        ]
+    }
+}
