@@ -15,7 +15,7 @@ console.log(isInArray([1, 2, 4], 1, 2, 5)); // false
 // 2
 type X = string | number;
 
-const summator = (...params: X[]): number => params.reduce((acc, curr) => acc + +curr, 0);
+const summator = (...params: X[]): number => params.reduce<number>((acc, curr) => acc + +curr, 0);
 
 console.log(summator(1, "2", 3);            // 6
 console.log(summator("1", "2", "3", "4");   // 10
