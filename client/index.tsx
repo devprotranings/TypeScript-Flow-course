@@ -9,7 +9,7 @@ class App extends React.Component {
   public render(): JSX.Element {
     return <Provider store={store}>
       <div>
-        <Header/>
+        <Header />
         <Content/>
       </div>
     </Provider>;

@@ -152,24 +152,24 @@
 //   }
 // }
 
-class Singleton {
-
-  public static instance() {
-    if (!this.pinstance) {
-      this.pinstance = new Singleton();
-    }
-    return this.pinstance;
-  }
-
-  private static pinstance: Singleton;
-
-  private constructor() {}
-
-}
-
-class A extends Singleton {
-
-}
+// class Singleton {
+//
+//   public static instance() {
+//     if (!this.pinstance) {
+//       this.pinstance = new Singleton();
+//     }
+//     return this.pinstance;
+//   }
+//
+//   private static pinstance: Singleton;
+//
+//   private constructor() {}
+//
+// }
+//
+// class A extends Singleton {
+//
+// }
 //
 // let s =  Singleton.instance();
 // interface IPoint {
@@ -215,5 +215,29 @@ class A extends Singleton {
 //   }
 // }
 
-
 // let p = new Point();
+
+function log(target: any, key: string, descriptor: any): any {
+  console.log(target)
+  console.log(key)
+  console.log(descriptor)
+  const originalDescriptor = descriptor.value;
+  return {
+    ...descriptor,
+    value: (...arg: any[]) => {
+      const result = originalDescriptor(arg);
+      console.log(`Call ${key}(${arg})=>${result}`);
+      return result;
+    },
+  };
+}
+
+class MathLib {
+  @log
+  public areaOfCircle(r: number): number {
+    return Math.PI * r ** 2;
+  }
+}
+
+const a = new MathLib();
+a.areaOfCircle(10);
