@@ -73,10 +73,10 @@
 // type hashMap<T, U, Z> = { [info: string]: T };
 //
 // let userInfo: hashMap<boolean>;
-
-function isString(a: number | string): a is string {
-  return typeof  a === 'string';
-}
+//
+// function isString(a: number | string): a is string {
+//   return typeof  a === 'string';
+// }
 
 
 // function average(a: number, b: string, c: number): string;
@@ -97,3 +97,147 @@ function isString(a: number | string): a is string {
 // }
 //
 // f.bind({ a: 1 }, 1);
+
+// type fn<T> = (arr: T[], ...args: T[]) => boolean;
+//
+// const isInArray: fn<number | string> = (arr: Array<number | string>, ...args: Array<number | string>): boolean => {
+//   const first = args.shift();
+//   if (arr.length < 1 || typeof first === "undefined" || arr.includes(first)) {
+//     return false;
+//   }
+//   return args.every((arg) => {
+//     return arr.includes(arg);
+//   });
+// };
+
+// let obj = {
+//   onEvent(cb: (this: void, e: Event) => void) {
+//     const a: number = 1;
+//   },
+// };
+//
+// class Handler {
+//   public info: string = 'message';
+//
+//   public handler(this: Handler, e: Event) {
+//     this.msg();
+//   }
+//
+//   public msg() {
+//     console.log(this.info);
+//   }
+// }
+//
+// let h = new Handler();
+// obj.onEvent(h.handler);
+
+// class Point {
+//   public readonly x: number;
+//   public readonly y: number;
+//   public readonly obj: {
+//     readonly a: 1,
+//     readonly b: 'asd',
+//   } = {
+//     a: 1,
+//     b: 'asd',
+//   };
+//
+//   private constructor(x: number, y: number) {
+//     this.x = x;
+//     this.y = y;
+//   }
+//
+//   public setCoord() {
+//     this.obj.a = 1;
+//   }
+// }
+
+// class Singleton {
+//
+//   public static instance() {
+//     if (!this.pinstance) {
+//       this.pinstance = new Singleton();
+//     }
+//     return this.pinstance;
+//   }
+//
+//   private static pinstance: Singleton;
+//
+//   private constructor() {}
+//
+// }
+//
+// class A extends Singleton {
+//
+// }
+//
+// let s =  Singleton.instance();
+// interface IPoint {
+//   x: number;
+// }
+
+
+// abstract class SuperPoint {
+//   public x!: number;
+//
+//   public position(): number {
+//     return this.x * 5;
+//   }
+//
+//   // public abstract generateCoord(): number;
+// }
+
+// class Point extends SuperPoint {
+//   public x!: number;
+//   protected z!: number;
+//   private y!: number;
+//   private d!: number;
+//
+//   public constructor() {
+//     super();
+//   }
+//
+//   public generateCoord(): number {
+//     return 5;
+//   }
+//
+//   public set e(value: number) {
+//     this.d = value;
+//   }
+// }
+//
+// let a = new Point();
+// a.e = 3;
+// class MyPoint extends Point {
+//
+//   public constructor() {
+//     super();
+//   }
+// }
+
+// let p = new Point();
+
+function log(target: any, key: string, descriptor: any): any {
+  console.log(target)
+  console.log(key)
+  console.log(descriptor)
+  const originalDescriptor = descriptor.value;
+  return {
+    ...descriptor,
+    value: (...arg: any[]) => {
+      const result = originalDescriptor(arg);
+      console.log(`Call ${key}(${arg})=>${result}`);
+      return result;
+    },
+  };
+}
+
+class MathLib {
+  @log
+  public areaOfCircle(r: number): number {
+    return Math.PI * r ** 2;
+  }
+}
+
+const a = new MathLib();
+a.areaOfCircle(10);
