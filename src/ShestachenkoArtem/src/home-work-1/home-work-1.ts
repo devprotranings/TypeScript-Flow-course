@@ -24,28 +24,24 @@ const resultIsInArray = isInArray<string | number>(['string', 5, 22323], 22323, 
  * @param {string | number} args
  * @returns {number}
  */
-function summator(...args: (string | number)[]): number {
-    // I don't know what is wrong here(
-    const sum: number = args.reduce((_prev: string | number, _curr: string | number): number => {
-        let prev: number;
-        let curr: number;
 
-        if (typeof _prev !== 'number') {
-            prev = Number.parseInt(_prev);
+type StrNum = string | number;
+
+function summator(...args: StrNum[]): number {
+    const sum: number = args.reduce<number>((prev: StrNum, curr: StrNum): number => {
+
+        if (typeof prev !== 'number') {
+            prev = Number.parseInt(prev);
             prev = !isNaN(prev) ? prev : 0;
-        } else {
-            prev = _prev;
         }
 
-        if (typeof _curr !== 'number') {
-            curr = Number.parseInt(_curr);
+        if (typeof curr !== 'number') {
+            curr = Number.parseInt(curr);
             curr = !isNaN(curr) ? curr : 0;
-        } else {
-            curr = _curr;
         }
 
         return prev += curr;
-    });
+    }, 0);
 
     return sum;
 }

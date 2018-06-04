@@ -55,6 +55,8 @@
     // "experimentalDecorators": true,        /* Enables experimental support for ES7 decorators. */
     // "emitDecoratorMetadata": true,         /* Enables experimental support for emitting type metadata for decorators. */
   },
-  "compileOnSave": true,
-  "include": ["home-work-1.ts"]
+  "compileOnSave": false,
+  "include": [
+    "src/home-work-1/home-work-1.ts"
+  ]
 }
