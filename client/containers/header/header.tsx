@@ -9,14 +9,14 @@ export interface IProps {
 
 export class Header extends React.Component<IProps> {
 
-  @debounce(500)
+  //@debounce(500)
   public onSearch(term: string) {
     this.props.search(term);
   }
 
   public render(): JSX.Element {
     return <div className='row header'>
-      Search: <input type='text' onChange={(e) => this.onSearch.call(this, e.target.value)}/>
+      Search: <input type='text' onChange={(e) => console.log(this)}/>
     </div>;
   }
 }

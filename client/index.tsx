@@ -5,11 +5,11 @@ import Content from './containers/content';
 import Header from './containers/header';
 import { store } from './store';
 
-class App extends React.Component {
+export class App extends React.Component {
   public render(): JSX.Element {
     return <Provider store={store}>
       <div>
-        <Header />
+        <Header/>
         <Content/>
       </div>
     </Provider>;

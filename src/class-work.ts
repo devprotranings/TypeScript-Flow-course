@@ -217,27 +217,112 @@
 
 // let p = new Point();
 
-function log(target: any, key: string, descriptor: any): any {
-  console.log(target)
-  console.log(key)
-  console.log(descriptor)
-  const originalDescriptor = descriptor.value;
-  return {
-    ...descriptor,
-    value: (...arg: any[]) => {
-      const result = originalDescriptor(arg);
-      console.log(`Call ${key}(${arg})=>${result}`);
-      return result;
-    },
-  };
-}
+// function log(target: any, key: string, descriptor: any): any {
+//   console.log(target)
+//   console.log(key)
+//   console.log(descriptor)
+//   const originalDescriptor = descriptor.value;
+//   return {
+//     ...descriptor,
+//     value: (...arg: any[]) => {
+//       const result = originalDescriptor(arg);
+//       console.log(`Call ${key}(${arg})=>${result}`);
+//       return result;
+//     },
+//   };
+// }
+//
+// class MathLib {
+//   @log
+//   public areaOfCircle(r: number): number {
+//     return Math.PI * r ** 2;
+//   }
+// }
+//
+// const a = new MathLib();
+// a.areaOfCircle(10);
 
-class MathLib {
-  @log
-  public areaOfCircle(r: number): number {
-    return Math.PI * r ** 2;
-  }
-}
+// const sequence$ = new Observable((observer: Observer<number>) => {
+//   let count: number = 0;
+//   let intervalMark: number;
+//   intervalMark = window.setInterval(() => {
+//     observer.next(count++);
+//   }, 1000);
+// });
+// TODO connectableObservable
+// import { interval } from 'rxjs/index';
+// const sequence$ = interval(1000);
+// const publisher$= sequence$.publish();
+// publisher.connect();
+// //
+// sequence$.subscribe((value: number) => {
+//   console.log(`Sequence 1 => ${value}`);
+// });
+//
+// setTimeout(() => {
+//   sequence$.subscribe((value: number) => {
+//     console.log(`Sequence 2 => ${value}`);
+//   });
+// },5000);
 
-const a = new MathLib();
-a.areaOfCircle(10);
+
+// import { fromEvent } from 'rxjs/index';
+//
+// const sequence$ = fromEvent(window, 'click');
+// sequence$.subscribe((event: Event) => {
+//   console.log(`Sequence 1 =>${(event as MouseEvent).clientX}`);
+// });
+//
+// setTimeout(() => {
+//   sequence$.subscribe((event: Event) => {
+//     console.log(`Sequence 2 =>${(event as MouseEvent).clientX}`);
+//   });
+// }, 5000)
+
+
+// const sequence$$: ReplaySubject<number> = new ReplaySubject(undefined, 2300);
+// let count = 0;
+// setInterval(() => {
+//   sequence$$.next(count++);
+// }, 1000);
+// setTimeout(() => {
+//   sequence$$.subscribe((value: number) => {
+//     console.log(`subscription 1 => ${value}`);
+//   });
+// }, 5000)
+
+// sequence$$.next(2);
+//
+// setTimeout(() => {
+//   sequence$$.next(3);
+//   sequence$$.subscribe((value: number) => {
+//     console.log(`subscription 2 => ${value}`);
+//   });
+// }, 5000);
+
+// import { from } from 'rxjs/index';
+// import { asap } from 'rxjs/internal/scheduler/asap';
+//
+// const arr = [];
+// for (let i = 0; i < 1000; i++) {
+//   arr.push(i);
+// }
+// const sequence = from(arr, asap);
+//
+// console.log('start!!!');
+// setTimeout(() => console.log('timeout'), 0)
+// Promise.resolve()
+//   .then(() => console.log('promise'))
+// // console.time('Observable');
+// // sequence.subscribe((value: number) => {
+// //   value === 999 ? console.log(value) : null
+// // }, () => {}, () => {
+// //   console.timeEnd('Observable');
+// // });
+// console.log('end!!!');
+
+const BASE = 'str';
+
+function d(val: string) {
+
+}

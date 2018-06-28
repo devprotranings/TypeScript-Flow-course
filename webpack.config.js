@@ -4,7 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 module.exports = {
   mode: 'none',
-  entry: './client/index',
+ // entry: './client/index',
+  entry: './src/class-work',
   output: {
     filename: "[name].bundle.js",
     chunkFilename: '[name].bundle.js',

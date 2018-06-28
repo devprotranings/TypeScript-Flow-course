@@ -5,7 +5,7 @@ import { rootReducer } from './reducers';
 import { SearchTerm, searchTermReducer } from './reducers/search-term.reducer';
 import { IUser, usersReducer } from './reducers/users.reducer';
 
-declare var __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: (arg: { name: string }) => typeof compose;
+ declare var __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: (arg: { name: string }) => typeof compose;
 
 export interface IStore {
   searchTerm: SearchTerm;
@@ -15,7 +15,7 @@ export interface IStore {
 const rootEpicsMiddlaware = createEpicMiddleware(rootEpic);
 const composeEnhancers =
   typeof window === 'object' &&
-  __REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
+  (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
     __REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
       name: 'Typescript Course',
     }) : compose;

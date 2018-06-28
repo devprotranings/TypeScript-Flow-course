@@ -1,6 +1,6 @@
 type primitive = string | number | boolean;
 
-function isInArray(arg1: Array<primitive>, ...args: Array<primitive>): boolean {
+export function isInArray(arg1: Array<primitive>, ...args: Array<primitive>): boolean {
         return args.every((item: primitive) => arg1.includes(item)
     );
 }

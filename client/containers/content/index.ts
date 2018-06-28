@@ -13,4 +13,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
   getUsers: () => dispatch(getUsersPending()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Content as any);
+export default connect(mapStateToProps, mapDispatchToProps)(Content);
